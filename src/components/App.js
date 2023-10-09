@@ -1,3 +1,5 @@
+import Leagues from './Leagues';
+
 const App = () => (
   <div className="App">
     <header className="App-header">
@@ -5,6 +7,7 @@ const App = () => (
         <h1>Soccer Hub</h1>
       </nav>
     </header>
+    <Leagues />
   </div>
 );
 

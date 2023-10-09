@@ -2,28 +2,21 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const leaguesUrl = 'http://api-football-standings.azharimm.dev/leagues';
 
-const fetchLeagues = createAsyncThunk('leagues/fetchLeagues', async (_, { dispatch, getState, rejectWithValue }) => {
-  const { leagues: leaguesState } = getState();
-  if (leaguesState.hasFetched) {
-    return leaguesState.leagues;
-  }
+export const fetchLeagues = createAsyncThunk('leagues/fetchLeagues', async (_, { getState, rejectWithValue }) => {
   try {
-    const response = await fetch(leaguesUrl);
-    if (!response.ok) {
-      const errorMessage = 'Failed to fetch leagues';
-      dispatch(fetchLeagues.rejected(errorMessage));
-      return rejectWithValue(errorMessage);
+    const { leagues: leaguesState } = getState();
+    if (leaguesState.hasFetched) {
+      return leaguesState.leagues;
     }
 
-    const responseData = await response.json();
-    if (!responseData.status) {
-      const errorMessage = 'Server response with false status';
-      dispatch(fetchLeagues.rejected(errorMessage));
-      return rejectWithValue(errorMessage);
+    const resp = await fetch(leaguesUrl);
+    const response = await resp.json();
+
+    if (!response.status) {
+      throw new Error('Failed to fetch leagues or server response with false status');
     }
 
-    leaguesState.hasFetched = true;
-    return responseData.data;
+    return response.data;
   } catch (error) {
     return rejectWithValue(error.message);
   }
@@ -53,9 +46,8 @@ const leaguesSlice = createSlice({
       })
       .addCase(fetchLeagues.fulfilled, (state, action) => {
         state.statusFetch = 'succeeded';
-        if (!state.hasFetched) {
-          state.leagues = action.payload;
-        }
+        state.leagues = action.payload;
+        state.hasFetched = true;
       })
       .addCase(fetchLeagues.rejected, (state, action) => {
         state.statusFetch = 'failed';
