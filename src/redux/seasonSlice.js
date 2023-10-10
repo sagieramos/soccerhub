@@ -26,7 +26,6 @@ const initialState = {
   leagues: [],
   hasFetched: false,
   statusFetch: 'idle',
-  activeChildPage: null,
   error: null,
 };
 
@@ -37,9 +36,6 @@ const leaguesSlice = createSlice({
     refresh: (state) => {
       state.hasFetched = false;
       state.error = null;
-    },
-    setActiveChildPage: (state, action) => {
-      state.activeChildPage = action.payload;
     },
   },
 
@@ -52,7 +48,6 @@ const leaguesSlice = createSlice({
         state.statusFetch = 'succeeded';
         state.leagues = action.payload;
         state.hasFetched = true;
-        state.error = null;
       })
       .addCase(fetchLeagues.rejected, (state, action) => {
         state.statusFetch = 'failed';
@@ -61,5 +56,5 @@ const leaguesSlice = createSlice({
   },
 });
 
-export const { refresh, setActiveChildPage } = leaguesSlice.actions;
+export const { refresh } = leaguesSlice.actions;
 export default leaguesSlice.reducer;

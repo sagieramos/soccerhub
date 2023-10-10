@@ -1,47 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchLeagues } from '../redux/leaguesSlice';
+import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
 import Indicator from './Indicator';
 import arrowForward from '../assets/arrow_forward.svg';
 
 const Leagues = () => {
   const dispatch = useDispatch();
   const { leagues, statusFetch } = useSelector((state) => state.leagues);
-  const [leagueDetails, setLeagueDetails] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchLeagues());
   }, [dispatch]);
 
-  const handleArrowForward = (leagueID) => {
-    setLeagueDetails(
-      leagues.find((item) => item.id === leagueID),
-    );
+  const handleClick = (id) => {
+    dispatch(setActiveChildPage(id));
+    navigate(`/${id}`, { replace: true });
   };
-
-  const handleArrowBackward = () => {
-    setLeagueDetails({});
-  };
-
-  if (Object.keys(leagueDetails).length !== 0) {
-    const { id, name } = leagueDetails;
-    return (
-      <div>
-        <section>
-          {id}
-          {' '}
-          {name}
-        </section>
-        <button type="button" onClick={() => handleArrowBackward()}>
-          <img
-            src={arrowForward}
-            alt="arrow-forward"
-            style={{ transform: 'scaleX(-1)' }}
-          />
-        </button>
-      </div>
-    );
-  }
 
   if (statusFetch === 'loading') {
     return (
@@ -50,13 +27,15 @@ const Leagues = () => {
       </div>
     );
   }
+
   return (
     <section id="leagues">
+
       {leagues.map((league) => {
         const { id, name, logos } = league;
         return (
           <article key={id}>
-            <button type="button" onClick={() => handleArrowForward(id)}>
+            <button type="button" onClick={() => handleClick(id)}>
               <img
                 src={arrowForward}
                 alt="arrow-forward"
