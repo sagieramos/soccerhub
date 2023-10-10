@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
 import Indicator from './Indicator';
 import arrowForward from '../assets/arrow_forward.svg';
+import '../styles/leagues.scss';
 
 const Leagues = () => {
   const dispatch = useDispatch();
