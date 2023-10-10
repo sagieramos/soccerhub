@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
+import { fetchClubSeason, resetClubseason } from '../redux/clubSeasonSlice';
+import SeasonTable from './SeasonTable';
+import '../styles/leagueDetail.scss';
 
 const LeagueDetails = () => {
   const dispatch = useDispatch();
   const { leagues, activeChildPage, hasFetched } = useSelector((state) => state.leagues);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!hasFetched) {
@@ -16,17 +20,25 @@ const LeagueDetails = () => {
     if (!activeChildPage) {
       dispatch(setActiveChildPage(location.pathname));
     }
+
+    dispatch(fetchClubSeason(`https://api-football-standings.azharimm.dev/leagues/${activeChildPage}/seasons`));
   }, [dispatch, hasFetched, activeChildPage, location.pathname]);
 
   const obj = leagues?.find((league) => league.id === activeChildPage);
 
+  const handleBackClick = () => {
+    dispatch(resetClubseason());
+    navigate('/');
+  };
+
   return (
-    <div>
-      <h2>LeagueDetails</h2>
-      <Link to="/">Back</Link>
+    <div className="league-detail">
+      <button type="button" onClick={() => handleBackClick()}>Back</button>
+      <img src={obj?.logos.light} alt="logo" />
       <div>
         {obj?.name}
       </div>
+      <SeasonTable />
     </div>
   );
 };

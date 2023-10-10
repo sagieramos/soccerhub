@@ -6,7 +6,7 @@ const Indicator = ({ isVisible, wrapperClass }) => (
     height={50}
     width={50}
     radius={4}
-    color="red"
+    color="#fff"
     ariaLabel="ball-triangle-loading"
     wrapperClass={wrapperClass}
     wrapperStyle=""

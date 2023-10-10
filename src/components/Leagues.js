@@ -35,7 +35,7 @@ const Leagues = () => {
       {leagues.map((league) => {
         const { id, name, logos } = league;
         return (
-          <article key={id}>
+          <button type="button" className="article" key={id} onClick={() => handleClick(id)}>
             <button type="button" onClick={() => handleClick(id)}>
               <img
                 src={arrowForward}
@@ -44,7 +44,7 @@ const Leagues = () => {
             </button>
             <img src={logos.light} alt="logo" />
             <h2>{name}</h2>
-          </article>
+          </button>
         );
       })}
     </section>
