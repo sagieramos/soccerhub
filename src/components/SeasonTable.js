@@ -16,13 +16,18 @@ const SeasonTable = () => {
     );
   }
 
+  const { seasons } = clubSeason.data;
+
+  if (!seasons) {
+    return (
+      <div>No seasons available</div>
+    );
+  }
   const handleViewStanding = (year) => {
-    const url = `https://api-football-standings.azharimm.dev/leagues/${location.pathname}/standings?season=${year}&sort=asc`;
+    const url = `https://api-football-standings.azharimm.dev/leagues/${location.pathname.replace(/\//g, '')}/standings?season=${year}&sort=asc`;
     dispatch(fetchClubStanding(url));
     navigate('./standing');
   };
-
-  const { seasons } = clubSeason.data;
 
   return (
     <section className="club-season-table">

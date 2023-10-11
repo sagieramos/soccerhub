@@ -24,11 +24,11 @@ const LeagueDetails = () => {
 
   useEffect(() => {
     if (activeChildPage) {
-      dispatch(fetchClubSeason(`https://api-football-standings.azharimm.dev/leagues/${activeChildPage}/seasons`));
+      dispatch(fetchClubSeason(`https://api-football-standings.azharimm.dev/leagues/${activeChildPage.replace(/\//g, '')}/seasons`));
     }
   }, [dispatch, activeChildPage]);
 
-  const obj = leagues?.find((league) => league.id === activeChildPage);
+  const obj = leagues?.find((league) => league.id === location.pathname.replace(/\//g, ''));
 
   const handleBackClick = () => {
     dispatch(resetClubseason());
@@ -37,7 +37,7 @@ const LeagueDetails = () => {
 
   return (
     <div className="league-detail">
-      <button type="button" onClick={handleBackClick}>Back</button>
+      <button type="button" onClick={handleBackClick}>Home</button>
       {obj && (
         <div>
           <img src={obj.logos.light} alt="logo" />
