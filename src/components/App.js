@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { fetchLeagues } from '../redux/leaguesSlice';
 import Leagues from './Leagues';
 import LeagueDetails from './LeagueDetails';
+import TeamList from './TeamList';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { leagues, hasFetched } = useSelector((state) => state.leagues);
+  const { hasFetched } = useSelector((state) => state.leagues);
 
   if (!hasFetched) {
     dispatch(fetchLeagues());
@@ -17,10 +18,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Leagues />} />
-        {
-          hasFetched
-          && leagues?.map((item) => <Route key={item.id} path={`/${item.id}`} element={<LeagueDetails />} />)
-        }
+        <Route path="/:leagueId" element={<LeagueDetails />} />
+        <Route path="/:leagueId/standing" element={<TeamList />} />
       </Routes>
     </Router>
   );

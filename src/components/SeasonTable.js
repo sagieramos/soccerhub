@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Indicator from './Indicator';
 import { fetchClubStanding } from '../redux/standingSlice';
 
@@ -8,6 +8,7 @@ const SeasonTable = () => {
   const { clubSeason } = useSelector((state) => state.clubSeason);
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   if (!clubSeason || !clubSeason.data) {
     return (
@@ -15,8 +16,11 @@ const SeasonTable = () => {
     );
   }
 
-  const handleViewStanding = () => {
-    dispatch(fetchClubStanding(`https://api-football-standings.azharimm.dev/leagues${location.pathname}/standings`));
+  const handleViewStanding = (year) => {
+    const url = `https://api-football-standings.azharimm.dev/leagues${location.pathname}/standings?season=${year}&sort=asc`;
+    console.log(url);
+    dispatch(fetchClubStanding(url));
+    navigate('./standing');
   };
 
   const { seasons } = clubSeason.data;
@@ -42,7 +46,7 @@ const SeasonTable = () => {
                 <td>{startDate}</td>
                 <td>{endDate}</td>
                 <td>
-                  <button type="button" onClick={() => handleViewStanding()}>show standing</button>
+                  <button type="button" onClick={() => handleViewStanding(year)}>show standing</button>
                 </td>
               </tr>
             );

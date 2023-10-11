@@ -17,7 +17,7 @@ const Leagues = () => {
   }, [dispatch]);
 
   const handleClick = (id) => {
-    dispatch(setActiveChildPage(id));
+    dispatch(setActiveChildPage(`/${id}`));
     navigate(`/${id}`, { replace: true });
   };
 
