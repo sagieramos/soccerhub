@@ -1,6 +1,7 @@
 {
   "name": "soccerhub",
   "version": "0.1.0",
+  "homepage": "https://sagieramos.github.io/soccerhub",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
