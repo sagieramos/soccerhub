@@ -30,24 +30,28 @@ const Leagues = () => {
   }
 
   return (
-    <section id="leagues">
-
-      {leagues.map((league) => {
-        const { id, name, logos } = league;
-        return (
-          <button type="button" className="article" key={id} onClick={() => handleClick(id)}>
-            <button type="button" onClick={() => handleClick(id)}>
-              <img
-                src={arrowForward}
-                alt="arrow-forward"
-              />
+    <div id="league-container">
+      <header>
+        <h1 id="app-name">SOCCERHUB</h1>
+      </header>
+      <section id="leagues">
+        {leagues.map((league) => {
+          const { id, name, logos } = league;
+          return (
+            <button type="button" className="article" key={id} onClick={() => handleClick(id)}>
+              <button type="button" onClick={() => handleClick(id)}>
+                <img
+                  src={arrowForward}
+                  alt="arrow-forward"
+                />
+              </button>
+              <img src={logos.light} alt="logo" />
+              <h2>{name}</h2>
             </button>
-            <img src={logos.light} alt="logo" />
-            <h2>{name}</h2>
-          </button>
-        );
-      })}
-    </section>
+          );
+        })}
+      </section>
+    </div>
   );
 };
 

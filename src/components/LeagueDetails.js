@@ -37,7 +37,10 @@ const LeagueDetails = () => {
 
   return (
     <div className="league-detail">
-      <button type="button" onClick={handleBackClick}>Home</button>
+      <header>
+        <h1 id="app-name">SOCCERHUB</h1>
+        <button className="home-btn" type="button" onClick={handleBackClick}>Home</button>
+      </header>
       {obj && (
         <div>
           <img src={obj.logos.light} alt="logo" />

@@ -1,13 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Indicator from './Indicator';
-import { fetchClubStanding } from '../redux/standingSlice';
 
 const SeasonTable = () => {
   const { clubSeason } = useSelector((state) => state.clubSeason);
-  const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
 
   if (!clubSeason || !clubSeason.data) {
@@ -20,13 +17,11 @@ const SeasonTable = () => {
 
   if (!seasons) {
     return (
-      <div>No seasons available</div>
+      <div className="bad-url">No data for this URL</div>
     );
   }
   const handleViewStanding = (year) => {
-    const url = `https://api-football-standings.azharimm.dev/leagues/${location.pathname.replace(/\//g, '')}/standings?season=${year}&sort=asc`;
-    dispatch(fetchClubStanding(url));
-    navigate('./standing');
+    navigate(`./${year}`);
   };
 
   return (
