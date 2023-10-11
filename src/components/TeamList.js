@@ -17,7 +17,6 @@ function TeamList() {
       fetchClubStanding(`https://api-football-standings.azharimm.dev/leagues/${leagueId.replace(/\//g, '')}/standings?season=${yearId}&sort=asc`),
     );
   }, [dispatch, leagueId, yearId]);
-  console.log(leagueId, yearId);
 
   const resetTeam = () => {
     dispatch(resetClubstanding());

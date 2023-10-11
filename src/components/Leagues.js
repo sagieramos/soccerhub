@@ -23,8 +23,13 @@ const Leagues = () => {
 
   if (statusFetch === 'loading') {
     return (
-      <div className="indicator-contianer">
-        <Indicator />
+      <div>
+        <header>
+          <h1>SOCCERHUB</h1>
+        </header>
+        <div className="indicator-container">
+          <Indicator />
+        </div>
       </div>
     );
   }
