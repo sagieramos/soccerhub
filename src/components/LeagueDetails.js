@@ -18,13 +18,13 @@ const LeagueDetails = () => {
     }
 
     if (!activeChildPage) {
-      dispatch(setActiveChildPage(location.pathname));
+      dispatch(setActiveChildPage(location.pathname.replace(/\//g, '')));
     }
-  }, [dispatch, hasFetched, activeChildPage]);
+  }, [dispatch, hasFetched, activeChildPage, location.pathname]);
 
   useEffect(() => {
     if (activeChildPage) {
-      dispatch(fetchClubSeason(`https://api-football-standings.azharimm.dev/leagues${activeChildPage}/seasons`));
+      dispatch(fetchClubSeason(`https://api-football-standings.azharimm.dev/leagues/${activeChildPage}/seasons`));
     }
   }, [dispatch, activeChildPage]);
 

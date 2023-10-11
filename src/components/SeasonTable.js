@@ -17,15 +17,12 @@ const SeasonTable = () => {
   }
 
   const handleViewStanding = (year) => {
-    const url = `https://api-football-standings.azharimm.dev/leagues${location.pathname}/standings?season=${year}&sort=asc`;
-    console.log(url);
+    const url = `https://api-football-standings.azharimm.dev/leagues/${location.pathname}/standings?season=${year}&sort=asc`;
     dispatch(fetchClubStanding(url));
     navigate('./standing');
   };
 
   const { seasons } = clubSeason.data;
-
-  console.log(location.pathname);
 
   return (
     <section className="club-season-table">
