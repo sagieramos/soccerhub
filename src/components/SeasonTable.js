@@ -9,7 +9,9 @@ const SeasonTable = () => {
 
   if (!clubSeason || !clubSeason.data) {
     return (
-      <Indicator />
+      <div className="indicator-child">
+        <Indicator />
+      </div>
     );
   }
 

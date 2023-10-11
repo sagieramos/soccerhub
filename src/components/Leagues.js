@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
 import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
 import Indicator from './Indicator';
 import arrowForward from '../assets/arrow_forward.svg';
 import '../styles/leagues.scss';
 
 const Leagues = () => {
-  const dispatch = useDispatch();
-  const { leagues, statusFetch } = useSelector((state) => state.leagues);
+  const dispatch = useAppDispatch();
+  const { leagues, statusFetch } = useAppSelector((state) => state.leagues);
 
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const Leagues = () => {
         <h1 id="app-name">SOCCERHUB</h1>
       </header>
       <section id="leagues">
-        {leagues.map((league) => {
+        {leagues?.map((league) => {
           const { id, name, logos } = league;
           return (
             <button type="button" className="article" key={id} onClick={() => handleClick(id)}>

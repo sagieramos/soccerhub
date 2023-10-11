@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
 import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
 import { fetchClubSeason, resetClubseason } from '../redux/clubSeasonSlice';
 import SeasonTable from './SeasonTable';
 import '../styles/leagueDetail.scss';
 
 const LeagueDetails = () => {
-  const dispatch = useDispatch();
-  const { leagues, activeChildPage, hasFetched } = useSelector((state) => state.leagues);
+  const dispatch = useAppDispatch();
+  const { leagues, activeChildPage, hasFetched } = useAppSelector((state) => state.leagues);
   const location = useLocation();
   const navigate = useNavigate();
 

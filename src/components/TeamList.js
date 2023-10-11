@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
 import { resetClubstanding, fetchClubStanding } from '../redux/standingSlice';
 import BackButton from './BackButton';
 import Indicator from './Indicator';
 import '../styles/teamlist.scss';
 
 function TeamList() {
-  const { clubStanding } = useSelector((state) => state.clubStanding);
-  const dispatch = useDispatch();
+  const { clubStanding } = useAppSelector((state) => state.clubStanding);
+  const dispatch = useAppDispatch();
   const { leagueId, yearId } = useParams();
   const navigate = useNavigate();
 
