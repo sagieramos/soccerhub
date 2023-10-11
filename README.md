@@ -14,6 +14,7 @@
     - [SoccerHub is your ultimate companion for all things football. Stay connected to the beautiful game like never before with our comprehensive app. Explore leagues, check live match scores, dive into in-depth team statistics, and get the latest football news from around the world—all in one place.](#soccerhub-is-your-ultimate-companion-for-all-things-football-stay-connected-to-the-beautiful-game-like-never-before-with-our-comprehensive-app-explore-leagues-check-live-match-scores-dive-into-in-depth-team-statistics-and-get-the-latest-football-news-from-around-the-worldall-in-one-place)
   - [🛠  Built With ](#--built-with-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -38,7 +39,14 @@
 - React
 - Redux
 ### Key Features <a name="key-features"></a>
-- [Live Demo Link](https://space-2cht.onrender.com)
+
+- The project is a single-page application (SPA) built with React and Redux.
+- The data retrieved from the [API](https://api-football-standings.azharimm.dev/) is stored in the Redux store.
+- Each page has a unique route
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo](https://soccerhub.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -103,6 +111,7 @@ If you like this project, please consider subscribing to my GitHub account for u
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 - Jehovah God
 - [Microverse Team](https://www.microverse.org/).
+- [Azhari Muhammad Marzan](https://github.com/azharimm/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
