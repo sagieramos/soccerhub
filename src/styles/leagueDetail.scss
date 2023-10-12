@@ -1,0 +1,72 @@
+.league-detail {
+  margin-top: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: inherit;
+
+  img {
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+  }
+
+  div {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .club-season-table {
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ec4c8a;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      th {
+        color: #fff;
+      }
+
+      tbody {
+        color: black;
+
+        tr {
+          background-color: #fff;
+        }
+
+        tr:nth-child(even) {
+          background-color: #f1efef;
+
+          td {
+            color: black;
+
+            bottom: {
+              color: black;
+            }
+          }
+        }
+      }
+
+      button {
+        background-color: transparent;
+        background-color: #ec4c8a;
+        border: 1px solid #ec4c8a;
+        color: #fff;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
