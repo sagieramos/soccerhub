@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
 import { resetClubstanding, fetchClubStanding } from '../redux/standingSlice';
 import BackButton from './BackButton';
 import Indicator from './Indicator';
+import HomeButton from './HomeButton';
 import '../styles/teamlist.scss';
 
 const TeamList = () => {
@@ -45,9 +46,9 @@ const TeamList = () => {
     return (
       <div id="team-list">
         <header>
-          <h1>SOCCERHUB</h1>
           <BackButton onClick={() => resetTeam()} />
-          <button className="home-btn" type="button" onClick={() => goHome()}>Home</button>
+          <h1>SOCCERHUB</h1>
+          <HomeButton onClick={() => goHome()} />
         </header>
         <article>
           <h1 className="team-list-title">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { HiChevronLeft } from 'react-icons/hi2';
 
 const BackButton = ({ onClick }) => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const BackButton = ({ onClick }) => {
 
   return (
     <button className="home-btn" type="button" onClick={handleClick}>
-      Back
+      <HiChevronLeft />
     </button>
   );
 };

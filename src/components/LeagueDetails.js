@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
 import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
 import { fetchClubSeason, resetClubseason } from '../redux/clubSeasonSlice';
 import SeasonTable from './SeasonTable';
+import HomeButton from './HomeButton';
+import BackButton from './BackButton';
 import '../styles/leagueDetail.scss';
 
 const LeagueDetails = () => {
@@ -38,8 +40,9 @@ const LeagueDetails = () => {
   return (
     <div className="league-detail">
       <header>
+        <BackButton />
         <h1 id="app-name">SOCCERHUB</h1>
-        <button className="home-btn" type="button" onClick={handleBackClick}>Home</button>
+        <HomeButton onClick={() => handleBackClick()} />
       </header>
       {obj && (
         <div>
