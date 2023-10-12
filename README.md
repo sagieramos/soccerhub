@@ -53,8 +53,6 @@
 
 - [ video presentation ](https://www.loom.com/share/95292335049d41549cf61d8cb9a2b95a?sid=4af47703-6bd8-4ea2-935a-12b355878f7b)
 
-<iframe width="800" height="450" src="https://www.loom.com/share/95292335049d41549cf61d8cb9a2b95a?sid=4af47703-6bd8-4ea2-935a-12b355878f7b" frameborder="0" allowfullscreen></iframe>
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
