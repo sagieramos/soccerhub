@@ -6,7 +6,7 @@ import BackButton from './BackButton';
 import Indicator from './Indicator';
 import '../styles/teamlist.scss';
 
-function TeamList() {
+const TeamList = () => {
   const { clubStanding, hasFetched } = useAppSelector((state) => state.clubStanding);
   const dispatch = useAppDispatch();
   const { leagueId, yearId } = useParams();
@@ -122,6 +122,6 @@ function TeamList() {
       <div className="bad-url">No data for this URL</div>
     </div>
   );
-}
+};
 
 export default TeamList;
