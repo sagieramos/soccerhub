@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   clubSeason: {},
+  lastLeagueId: null,
   hasFetched: false,
 };
 
@@ -26,6 +27,11 @@ const clubSeasonSlice = createSlice({
     setClubSeason: (state, action) => {
       state.clubSeason = action.payload;
     },
+
+    setLastLeagueId(state, action) {
+      state.lastLeagueId = (action.payload);
+    },
+
     resetClubseason: (state) => {
       state.clubSeason = initialState.clubSeason;
       state.hasFetched = initialState.hasFetched;
@@ -39,5 +45,5 @@ const clubSeasonSlice = createSlice({
   },
 });
 
-export const { setClubSeason, resetClubseason } = clubSeasonSlice.actions;
+export const { setClubSeason, setLastLeagueId, resetClubseason } = clubSeasonSlice.actions;
 export default clubSeasonSlice.reducer;

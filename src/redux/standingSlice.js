@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   clubStanding: {},
-  lastViewYear: 2023,
+  lastViewYear: null,
   hasFetched: false,
 };
 

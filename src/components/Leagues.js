@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
 import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
+import { resetClubseason } from '../redux/clubSeasonSlice';
+import { setFirstRoute } from '../redux/routeSlice';
 import Indicator from './Indicator';
 import arrowForward from '../assets/arrow_forward.svg';
 import '../styles/leagues.scss';
@@ -9,6 +11,7 @@ import '../styles/leagues.scss';
 const Leagues = () => {
   const dispatch = useAppDispatch();
   const { leagues, statusFetch } = useAppSelector((state) => state.leagues);
+  const { first } = useAppSelector((state) => state.routes);
 
   const navigate = useNavigate();
 
@@ -17,6 +20,10 @@ const Leagues = () => {
   }, [dispatch]);
 
   const handleClick = (id) => {
+    if (id !== first) {
+      dispatch(setFirstRoute(id));
+      dispatch(resetClubseason());
+    }
     dispatch(setActiveChildPage(`/${id}`));
     navigate(`/${id}`, { replace: true });
   };
@@ -44,7 +51,7 @@ const Leagues = () => {
           const { id, name, logos } = league;
           return (
             <button type="button" className="article" key={id} onClick={() => handleClick(id)}>
-              <button type="button" onClick={() => handleClick(id)}>
+              <button type="button">
                 <img
                   src={arrowForward}
                   alt="arrow-forward"
