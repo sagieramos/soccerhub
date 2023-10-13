@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   clubStanding: {},
+  lastViewYear: 2023,
   hasFetched: false,
 };
 
@@ -26,6 +27,11 @@ const StandingSlice = createSlice({
     setClubStanding: (state, action) => {
       state.clubStanding = action.payload;
     },
+
+    setLastViewYear: (state, action) => {
+      state.lastViewYear = action.payload;
+    },
+
     resetClubstanding: (state) => {
       state.clubStanding = initialState.clubStanding;
       state.hasFetched = initialState.hasFetched;
@@ -39,5 +45,5 @@ const StandingSlice = createSlice({
   },
 });
 
-export const { setClubStanding, resetClubstanding } = StandingSlice.actions;
+export const { setClubStanding, setLastViewYear, resetClubstanding } = StandingSlice.actions;
 export default StandingSlice.reducer;

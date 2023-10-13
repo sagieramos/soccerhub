@@ -8,7 +8,7 @@ import HomeButton from './HomeButton';
 import '../styles/teamlist.scss';
 
 const TeamList = () => {
-  const { clubStanding, hasFetched } = useAppSelector((state) => state.clubStanding);
+  const { clubStanding, hasFetched } = useAppSelector((state) => state.clubStandings);
   const dispatch = useAppDispatch();
   const { leagueId, yearId } = useParams();
   const navigate = useNavigate();
@@ -32,9 +32,9 @@ const TeamList = () => {
     return (
       <div>
         <header>
+          <BackButton />
           <h1>SOCCERHUB</h1>
-          <BackButton onClick={() => resetTeam()} />
-          <button className="home-btn" type="button" onClick={() => goHome()}>Home</button>
+          <HomeButton onClick={() => goHome()} />
         </header>
         <div className="indicator-container">
           <Indicator />
@@ -46,7 +46,7 @@ const TeamList = () => {
     return (
       <div id="team-list">
         <header>
-          <BackButton onClick={() => resetTeam()} />
+          <BackButton />
           <h1>SOCCERHUB</h1>
           <HomeButton onClick={() => goHome()} />
         </header>
@@ -116,9 +116,9 @@ const TeamList = () => {
   return (
     <div>
       <header>
+        <BackButton />
         <h1>SOCCERHUB</h1>
-        <BackButton onClick={() => resetTeam()} />
-        <button className="home-btn" type="button" onClick={() => goHome()}>Home</button>
+        <HomeButton onClick={() => goHome()} />
       </header>
       <div className="bad-url">No data for this URL</div>
     </div>

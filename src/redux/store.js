@@ -6,8 +6,8 @@ import standingReducer from './standingSlice';
 const store = configureStore({
   reducer: {
     leagues: leaguesReducer,
-    clubSeason: clubSeasonReducer,
-    clubStanding: standingReducer,
+    clubSeasons: clubSeasonReducer,
+    clubStandings: standingReducer,
   },
 });
 

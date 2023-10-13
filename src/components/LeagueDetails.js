@@ -40,9 +40,9 @@ const LeagueDetails = () => {
   return (
     <div className="league-detail">
       <header>
-        <BackButton />
+        <BackButton click={() => navigate('/')} />
         <h1 id="app-name">SOCCERHUB</h1>
-        <HomeButton onClick={() => handleBackClick()} />
+        <HomeButton click={() => handleBackClick()} />
       </header>
       {obj && (
         <div>

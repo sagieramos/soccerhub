@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { HiChevronLeft } from 'react-icons/hi2';
 
-const BackButton = ({ onClick }) => {
+const BackButton = ({ click }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    onClick();
-    navigate(-1);
+    if (click) {
+      click();
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
@@ -19,11 +22,11 @@ const BackButton = ({ onClick }) => {
 };
 
 BackButton.propTypes = {
-  onClick: PropTypes.func,
+  click: PropTypes.func,
 };
 
 BackButton.defaultProps = {
-  onClick: null,
+  click: null,
 };
 
 export default BackButton;

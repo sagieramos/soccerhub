@@ -13,13 +13,14 @@ body {
 header {
   position: absolute;
   top: 0;
-  padding: 24px;
+  padding: 12px;
   border-bottom: 1px solid #eba7c1a9;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
+  margin: 0;
 
   h1 {
     font-size: 1.3rem;
