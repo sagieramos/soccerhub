@@ -67,7 +67,7 @@ const TeamList = () => {
               )}
               <h2>{team.team.name}</h2>
               <h3 className="sub-title">
-                <span>{clubStanding.data.seasonDisplay}</span>
+                <span>{clubStanding.data.season}</span>
                 {' '}
                 {clubStanding.data.name}
               </h3>
