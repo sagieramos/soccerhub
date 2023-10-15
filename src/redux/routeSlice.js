@@ -1,32 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const shiftArray = (array, route) => {
+  const [first] = array;
+  array[1] = first;
+  array[0] = route;
+
+  return array;
+};
+
 const initialState = {
-  first: null,
-  lastFirst: null,
-  second: null,
+  firstRoutes: [null, null],
+  secondRoutes: [null, null],
 };
 
 const routeSlice = createSlice({
   name: 'routes',
   initialState,
   reducers: {
-    setFirstRoute: (state, action) => {
-      state.first = action.payload;
+    updateFirstRoutes: (state, action) => {
+      state.firstRoutes = shiftArray(state.firstRoutes, action.payload);
     },
-    setLastFirst: (state, action) => {
-      state.lastFirst = action.payload;
-    },
-    setSecondRoute: (state, action) => {
-      state.second = action.payload;
+    updateSecondRoutes: (state, action) => {
+      state.secondRoutes = shiftArray(state.secondRoutes, action.payload);
     },
     resetRoutes: (state) => {
-      state.first = null;
-      state.second = null;
+      state.firstRoutes = initialState.firstRoutes;
+      state.secondRoutes = initialState.secondRoutes;
     },
   },
 });
 
-export const {
-  setFirstRoute, setLastFirst, setSecondRoute, resetRoutes,
-} = routeSlice.actions;
+export const { updateFirstRoutes, updateSecondRoutes, resetRoutes } = routeSlice.actions;
 export default routeSlice.reducer;

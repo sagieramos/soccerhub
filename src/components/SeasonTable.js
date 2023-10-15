@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../redux/redux-hooks';
 import { resetClubstanding } from '../redux/standingSlice';
-import { setSecondRoute, setLastFirst } from '../redux/routeSlice';
+import { updateFirstRoutes, updateSecondRoutes } from '../redux/routeSlice';
 import Indicator from './Indicator';
 
 const SeasonTable = () => {
-  const { first, lastFirst, second } = useAppSelector((state) => state.routes);
+  const { firstRoutes, secondRoutes } = useAppSelector((state) => state.routes);
   const { clubSeason } = useAppSelector((state) => state.clubSeasons);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -28,9 +28,9 @@ const SeasonTable = () => {
   }
 
   const handleViewStanding = (year) => {
-    if (year !== second || first !== lastFirst) {
-      dispatch(setSecondRoute(year));
-      dispatch(setLastFirst(first));
+    if (year !== secondRoutes[0] || firstRoutes[0] !== firstRoutes[1]) {
+      dispatch(updateSecondRoutes(year));
+      dispatch(updateFirstRoutes(firstRoutes[0]));
       dispatch(resetClubstanding());
     }
     navigate(`./${year}`);
