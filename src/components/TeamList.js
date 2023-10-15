@@ -5,6 +5,7 @@ import { resetClubstanding, fetchClubStanding } from '../redux/standingSlice';
 import BackButton from './BackButton';
 import Indicator from './Indicator';
 import HomeButton from './HomeButton';
+import SeasonNav from './SeasonNav';
 import '../styles/teamlist.scss';
 
 const TeamList = () => {
@@ -49,14 +50,13 @@ const TeamList = () => {
           <BackButton />
           <h1>SOCCERHUB</h1>
           <HomeButton onClick={() => goHome()} />
+          <article>
+            <h1 className="team-list-title">
+              <SeasonNav />
+              {clubStanding.data.name}
+            </h1>
+          </article>
         </header>
-        <article>
-          <h1 className="team-list-title">
-            <span>{clubStanding.data.season}</span>
-            {' '}
-            {clubStanding.data.name}
-          </h1>
-        </article>
         <main>
           {clubStanding.data.standings.map((team) => (
             <div key={team.team.id}>
