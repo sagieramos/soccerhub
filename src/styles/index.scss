@@ -15,10 +15,10 @@ header {
   background-color: #f51f71e0;
   z-index: 2;
   top: 0;
-  padding: 12px;
   border-bottom: 1px solid #eba7c1a9;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 24px;
@@ -30,6 +30,28 @@ header {
     color: #eba7c1;
     text-shadow: 2px 2px 4px #333;
     margin: 0;
+  }
+
+  article {
+    h2 {
+      padding: 5px;
+      border-radius: 4px;
+      background-color: #f0f0f0;
+      color: #777;
+      font-size: 1rem;
+
+      * {
+        color: #777;
+      }
+
+      span {
+        select {
+          background-color: inherit;
+          font-size: inherit;
+          border: none;
+        }
+      }
+    }
   }
 
   .home-btn {

@@ -26,15 +26,13 @@ const SeasonNav = () => {
   };
 
   return (
-    <div>
-      <select name="year" id="year" value={pathSegments[2]} onChange={handleChange}>
-        {seasons.map((season) => (
-          <option key={season.year} value={season.year}>
-            {season.year}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select name="year" id="year" value={pathSegments[2]} onChange={handleChange}>
+      {seasons.map((season) => (
+        <option key={season.year} value={season.year}>
+          {season.year}
+        </option>
+      ))}
+    </select>
   );
 };
 

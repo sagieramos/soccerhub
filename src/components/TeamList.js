@@ -48,13 +48,13 @@ const TeamList = () => {
       <div id="team-list">
         <header>
           <BackButton />
-          <h1>SOCCERHUB</h1>
           <HomeButton onClick={() => goHome()} />
+          <h1>SOCCERHUB</h1>
           <article>
-            <h1 className="team-list-title">
-              <SeasonNav />
+            <h2 className="team-list-title">
               {clubStanding.data.name}
-            </h1>
+              <span><SeasonNav /></span>
+            </h2>
           </article>
         </header>
         <main>
