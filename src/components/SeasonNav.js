@@ -13,7 +13,7 @@ const SeasonNav = () => {
   const pathSegments = location.pathname.split('/');
 
   useEffect(() => {
-    if (!hasFetched) {
+    if (!hasFetched && pathSegments[2]) {
       dispatch(fetchClubSeason(`https://api-football-standings.azharimm.dev/leagues/${pathSegments[1]}/seasons`));
     }
   }, [hasFetched, dispatch, pathSegments]);
