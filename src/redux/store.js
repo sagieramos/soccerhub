@@ -11,7 +11,7 @@ const store = configureStore({
     clubStandings: standingReducer,
     routes: routeReducer,
   },
-  devTools: true,
+  devTools: false,
 });
 
 export default store;
