@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
-import { resetClubstanding, fetchClubStanding } from '../redux/standingSlice';
-import BackButton from './BackButton';
+import { fetchClubStanding } from '../redux/standingSlice';
 import Indicator from './Indicator';
-import HomeButton from './HomeButton';
-import SeasonNav from './SeasonNav';
 import '../styles/teamlist.scss';
 
 const TeamList = () => {
   const { clubStanding, hasFetched } = useAppSelector((state) => state.clubStandings);
   const dispatch = useAppDispatch();
   const { leagueId, yearId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(
@@ -20,43 +16,16 @@ const TeamList = () => {
     );
   }, [dispatch, leagueId, yearId]);
 
-  const resetTeam = () => {
-    dispatch(resetClubstanding());
-  };
-
-  const goHome = () => {
-    navigate('/');
-    resetTeam();
-  };
-
   if (!hasFetched) {
     return (
-      <div>
-        <header>
-          <BackButton />
-          <h1>SOCCERHUB</h1>
-          <HomeButton onClick={() => goHome()} />
-        </header>
-        <div className="indicator-container">
-          <Indicator />
-        </div>
+      <div className="indicator-container">
+        <Indicator />
       </div>
     );
   }
   if (clubStanding.status) {
     return (
       <div id="team-list">
-        <header>
-          <BackButton />
-          <HomeButton onClick={() => goHome()} />
-          <h1>SOCCERHUB</h1>
-          <article>
-            <h2 className="team-list-title">
-              {clubStanding.data.name}
-              <span><SeasonNav /></span>
-            </h2>
-          </article>
-        </header>
         <main>
           {clubStanding.data.standings.map((team) => (
             <div key={team.team.id}>
@@ -114,14 +83,7 @@ const TeamList = () => {
     );
   }
   return (
-    <div>
-      <header>
-        <BackButton />
-        <h1>SOCCERHUB</h1>
-        <HomeButton onClick={() => goHome()} />
-      </header>
-      <div className="bad-url">No data for this URL</div>
-    </div>
+    <div className="bad-url">No data for this URL</div>
   );
 };
 

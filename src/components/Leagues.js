@@ -30,22 +30,14 @@ const Leagues = () => {
 
   if (statusFetch === 'loading') {
     return (
-      <div>
-        <header>
-          <h1>SOCCERHUB</h1>
-        </header>
-        <div className="indicator-container">
-          <Indicator />
-        </div>
+      <div className="indicator-container">
+        <Indicator />
       </div>
     );
   }
 
   return (
     <div id="league-container">
-      <header>
-        <h1 id="app-name">SOCCERHUB</h1>
-      </header>
       <section id="leagues">
         {leagues?.map((league) => {
           const { id, name, logos } = league;

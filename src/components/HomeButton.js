@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HiHome } from 'react-icons/hi2';
+import { BiHomeAlt2 } from 'react-icons/bi';
 
 const HomeButton = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const HomeButton = () => {
 
   return (
     <button className="home-btn" type="button" onClick={handleClick}>
-      <HiHome />
+      <BiHomeAlt2 />
     </button>
   );
 };

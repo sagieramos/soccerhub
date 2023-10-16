@@ -6,7 +6,6 @@ import { resetClubstanding } from '../redux/standingSlice';
 
 const SeasonNav = () => {
   const { clubSeason } = useAppSelector((state) => state.clubSeasons);
-  const { seasons } = clubSeason.data;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,15 +24,19 @@ const SeasonNav = () => {
     navigate(newPath, { replace: true });
   };
 
-  return (
-    <select name="year" id="year" value={pathSegments[2]} onChange={handleChange}>
-      {seasons.map((season) => (
-        <option key={season.year} value={season.year}>
-          {season.year}
-        </option>
-      ))}
-    </select>
-  );
+  if (clubSeason.status && pathSegments[2]) {
+    const { seasons } = clubSeason.data;
+    return (
+      <select name="year" id="year" value={pathSegments[2]} onChange={handleChange}>
+        {seasons.map((season) => (
+          <option key={season.year} value={season.year}>
+            {season.year}
+          </option>
+        ))}
+      </select>
+    );
+  }
+  return null;
 };
 
 export default SeasonNav;

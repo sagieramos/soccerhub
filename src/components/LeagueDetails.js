@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/redux-hooks';
 import { fetchLeagues, setActiveChildPage } from '../redux/leaguesSlice';
-import { fetchClubSeason, resetClubseason } from '../redux/clubSeasonSlice';
+import { fetchClubSeason } from '../redux/clubSeasonSlice';
 import SeasonTable from './SeasonTable';
-import HomeButton from './HomeButton';
-import BackButton from './BackButton';
 import '../styles/leagueDetail.scss';
 
 const LeagueDetails = () => {
   const dispatch = useAppDispatch();
   const { leagues, activeChildPage, hasFetched } = useAppSelector((state) => state.leagues);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!hasFetched) {
@@ -32,18 +29,8 @@ const LeagueDetails = () => {
 
   const obj = leagues?.find((league) => league.id === location.pathname.replace(/\//g, ''));
 
-  const handleBackClick = () => {
-    dispatch(resetClubseason());
-    navigate('/');
-  };
-
   return (
     <div className="league-detail">
-      <header>
-        <BackButton click={() => navigate('/')} />
-        <h1 id="app-name">SOCCERHUB</h1>
-        <HomeButton click={() => handleBackClick()} />
-      </header>
       {obj && (
         <div>
           <img src={obj.logos.light} alt="logo" />

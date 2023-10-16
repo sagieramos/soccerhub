@@ -22,7 +22,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: 24px;
-  margin: 0;
+  padding: 12px 0;
 
   h1 {
     font-size: 1.3rem;
@@ -32,35 +32,60 @@ header {
     margin: 0;
   }
 
-  article {
-    h2 {
-      padding: 5px;
-      border-radius: 4px;
-      background-color: #f0f0f0;
+  h2 {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: #777;
+    font-size: 1rem;
+
+    * {
       color: #777;
-      font-size: 1rem;
-
-      * {
-        color: #777;
-      }
-
-      span {
-        select {
-          background-color: inherit;
-          font-size: inherit;
-          border: none;
-        }
-      }
     }
   }
 
-  .home-btn {
+  select {
     background-color: inherit;
+    font-size: inherit;
     border: none;
+    padding: 6px;
     color: #fff;
-    padding: 10px 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
+    font-weight: 600;
+  }
+
+  select option {
+    background-color: #fff;
+    color: #333;
+    padding: 5px 10px;
+  }
+  
+  select option:hover {
+    background-color: #007BFF;
+    color: #fff;
+  }
+  
+  select option:checked {
+    background-color: #28A745;
+    color: #fff;
+  }
+
+  div {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 0 5px;
+
+    .home-btn {
+      background-color: inherit;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0;
+      padding-top: 5px;
+    }
   }
 }
 
