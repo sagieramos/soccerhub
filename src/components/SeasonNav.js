@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../redux/redux-hooks';
 import { updateSecondRoutes } from '../redux/routeSlice';
 import { resetClubstanding } from '../redux/standingSlice';
+import { fetchClubSeason } from '../redux/clubSeasonSlice';
 
 const SeasonNav = () => {
-  const { clubSeason } = useAppSelector((state) => state.clubSeasons);
+  const { clubSeason, hasFetched } = useAppSelector((state) => state.clubSeasons);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-
   const pathSegments = location.pathname.split('/');
+
+  useEffect(() => {
+    if (!hasFetched) {
+      dispatch(fetchClubSeason(`https://api-football-standings.azharimm.dev/leagues/${pathSegments[1]}/seasons`));
+    }
+  }, [hasFetched, dispatch, pathSegments]);
 
   const handleChange = (e) => {
     const selectedYear = e.target.value;
