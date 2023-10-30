@@ -33,13 +33,16 @@ const SeasonNav = () => {
   if (clubSeason.status && pathSegments[2]) {
     const { seasons } = clubSeason.data;
     return (
-      <select name="year" id="year" value={pathSegments[2]} onChange={handleChange}>
-        {seasons.map((season) => (
-          <option key={season.year} value={season.year}>
-            {season.year}
-          </option>
-        ))}
-      </select>
+      <article className="season-nav">
+        <h2>Season:</h2>
+        <select name="year" id="year" value={pathSegments[2]} onChange={handleChange}>
+          {seasons.map((season) => (
+            <option key={season.year} value={season.year}>
+              {season.year}
+            </option>
+          ))}
+        </select>
+      </article>
     );
   }
   return null;

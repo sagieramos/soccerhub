@@ -34,7 +34,7 @@ const LeagueDetails = () => {
       {obj && (
         <div>
           <img src={obj.logos.light} alt="logo" />
-          <div>{obj.name}</div>
+          <div className="league-name">{obj.name}</div>
         </div>
       )}
       <SeasonTable />

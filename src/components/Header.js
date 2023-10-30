@@ -18,7 +18,6 @@ const Header = () => {
                   <BackButton />
                 ) : null
             }
-
             <HomeButton />
           </div>
         ) : null

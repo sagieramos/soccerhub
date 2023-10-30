@@ -53,7 +53,7 @@ const SeasonTable = () => {
               <td>{startDate}</td>
               <td>{endDate}</td>
               <td>
-                <button type="button" onClick={() => handleViewStanding(year)}>show standing</button>
+                <button type="button" onClick={() => handleViewStanding(year)}>show season</button>
               </td>
             </tr>
           ))}

@@ -6,15 +6,29 @@
   text-align: center;
   color: inherit;
 
-  img {
-    width: 100px;
-    height: 100px;
-    padding: 20px;
-  }
 
   div {
-    font-size: 24px;
-    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    img {
+      height: 200px;
+      background-color: #ccc;
+      border-radius: 5px 0 0 5px;
+      padding: 20px;
+    }
+    
+    .league-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      align-items: flex-end;
+      width: 200px;
+      background-color: #ccc;
+      border-radius: 0 5px 5px 0;
+      padding: 20px;
+      border-left: 1px solid #fff;
+    }
   }
 
   .club-season-table {

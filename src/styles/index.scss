@@ -32,14 +32,19 @@ header {
     margin: 0;
   }
 
-  h2 {
-    padding: 5px;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-    color: #777;
-    font-size: 1rem;
+  .season-nav {
+    display: flex;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 5px;
+    padding: 0 8px;
 
-    * {
+    h2 {
+      cursor: default;
+      margin: 0;
+      background: none;
+      font-size: 1rem;
+      font-weight: 400;
       color: #777;
     }
   }
@@ -49,7 +54,7 @@ header {
     font-size: inherit;
     border: none;
     padding: 6px;
-    color: #fff;
+    color: #000;
     font-weight: 600;
   }
 
